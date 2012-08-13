@@ -395,7 +395,7 @@ class @Gmaps4Rails
   #moves map to marker clicked + open infowindow
   sidebar_element_handler : (currentMap, marker, eventType) ->
     return () ->
-      currentMap.map.panTo(marker.position)
+      #currentMap.map.panTo(marker.position)
       google.maps.event.trigger(marker, eventType)
 
 

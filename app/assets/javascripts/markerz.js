@@ -59,12 +59,12 @@
   }
 
   function fitMapToVisibleMarkers(arg) {
-    var latlngbounds = new google.maps.LatLngBounds();
+    var newbounds = new google.maps.LatLngBounds();
     for (var i = 0; i < Gmaps.map.markers.length; i++) {
         if (Gmaps.map.markers[i].serviceObject.getVisible())
-        latlngbounds.extend(Gmaps.map.markers[i].serviceObject.position);
+        newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
     }
-    Gmaps.map.map.fitBounds(latlngbounds);
+    Gmaps.map.map.fitBounds(newbounds);
   }
 
 $("#categories li").click(function() {
@@ -98,7 +98,6 @@ $("#categories li").click(function() {
     closeBubble();
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
     refreshSidebar();
-    //Gmaps.map.adjustMapToBounds();
     fitMapToVisibleMarkers();
 
     return false;
@@ -108,4 +107,3 @@ $("#categories li a.all").click(function() {
   showAll();
   return false;
 });
-
