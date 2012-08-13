@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Übersicht für Kontakt Nr. <%= @contact.id %> </h1>
+
+<div style="float: left; margin-right: 20px;">
+<%= gmaps("markers" => { "data" => @json_single, "options" => { "do_clustering" => true } },
+          "map_options" => { "auto_zoom" => false, "zoom" => 17 }) %>
+</div>
+
+<p>
+  <b>Name:</b>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @contact.categories.collect{|u| u.name}.join(', ') %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @contact.address %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
+

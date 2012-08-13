@@ -1,0 +1,25 @@
+<h1>Listing contact_link_scategories</h1>
+
+<table>
+  <tr>
+    <th>Contact</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contact_link_scategories.each do |contact_link_scategory| %>
+  <tr>
+    <td><%= contact_link_scategory.contact_id %></td>
+    <td><%= contact_link_scategory.category_id %></td>
+    <td><%= link_to 'Show', contact_link_scategory %></td>
+    <td><%= link_to 'Edit', edit_contact_link_scategory_path(contact_link_scategory) %></td>
+    <td><%= link_to 'Destroy', contact_link_scategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contact link scategory', new_contact_link_scategory_path %>
