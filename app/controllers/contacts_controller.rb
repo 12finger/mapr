@@ -14,14 +14,14 @@ class ContactsController < ApplicationController
        marker.json({ :id => event.id, :vcounter => "0", :cat => event.categories.collect{|u| u.id}.join(',') })
        ### TODO: logic for individual marker pic
        # marker.picture ({
-       #    "picture" => "/images/#{name}.png",
-       #    "width" => 20,
-       #    "height" => 20,
+       #    "picture" => "/images/markerBig.png",
+       #    "width" => 33,
+       #    "height" => 35,
        #    "marker_anchor" => [ 5, 10],
-       #    "shadow_picture" => "/images/morgan.png" ,
-       #    "shadow_width" => "110",
-       #    "shadow_height" => "110",
-       #    "shadow_anchor" => [5, 10],
+       #    # "shadow_picture" => "/images/morgan.png" ,
+       #    # "shadow_width" => "110",
+       #    # "shadow_height" => "110",
+       #    # "shadow_anchor" => [5, 10],
        #   }) 
      end
   end

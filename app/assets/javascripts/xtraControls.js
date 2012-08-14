@@ -31,7 +31,7 @@
     controlDiv.style.padding = '50px';
     controlDiv.style.paddingLeft = '0px';
     controlDiv.style.marginLeft = '25px';
-    controlDiv.style.width = '150px';
+    controlDiv.style.width = '170px';
     controlDiv.style.height = '50px';
     controlDiv.style.zIndex = '-1';
     var controlUI = document.createElement('div');

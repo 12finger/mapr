@@ -2,7 +2,8 @@
 
 <h1> Übersicht für Kontakt Nr. <%= @contact.id %> </h1>
 
-<div style="float: left; margin-right: 20px;">
+
+<div class="contacts-view" style="float: left; margin-right: 20px;">
 <%= gmaps("markers" => { "data" => @json_single, "options" => { "do_clustering" => true } },
           "map_options" => { "auto_zoom" => false, "zoom" => 17 }) %>
 </div>
