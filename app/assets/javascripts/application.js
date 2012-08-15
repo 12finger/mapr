@@ -14,3 +14,28 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
+
+function makeMaprStyle(arg) {
+    var style = [
+          {
+            featureType: 'all',
+            elementType: 'all',
+            stylers: [{ saturation: -20 },{ lightness: -20 },{ gamma: 0.8 }]
+          },
+          { 
+            featureType: "water",
+            elementType: 'all',
+            stylers:[
+              { color: "#646ca7" },
+              {saturation: "-80"},
+              //{lightness:80}
+            ]
+          }
+    ];
+    var styledMapType = new google.maps.StyledMapType(style, {map: map, name: 'Styled Map'  });
+    Gmaps.map.serviceObject.mapTypes.set('maprStyle', styledMapType)
+    Gmaps.map.serviceObject.setMapTypeId('maprStyle')
+    //Gmaps.map.serviceObject.setMapTypeId(google.maps.MapTypeId.HYBRID);
+
+
+};

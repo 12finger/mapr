@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
 
   def map
      @allmarkersjson = Contact.all.to_gmaps4rails do | event, marker|
-       marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
+       marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address} </br> #{event.id} "
        ### maybe use a partial here for better MVC separation, but for now above solution suffice
        #@eid = event.id
        #marker.infowindow render_to_string(:partial => "/contacts/infowindow", :locals => { :object => @contact}).gsub(/\n/, '').gsub(/"/, '\"')

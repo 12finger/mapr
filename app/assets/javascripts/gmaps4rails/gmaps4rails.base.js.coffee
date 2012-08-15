@@ -73,6 +73,8 @@ class @Gmaps4Rails
   #tnitializes the map
   initialize : ->
     @serviceObject = @createMap()
+    #@serviceObject = @makeMaprStyle()
+    makeMaprStyle()
     @map = @serviceObject #beware, soon deprecated
     if (@map_options.detect_location == true or @map_options.center_on_user == true)
       @findUserLocation(this)

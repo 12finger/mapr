@@ -8,7 +8,8 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
     super
     #Map settings
     @map_options =
-      disableDefaultUI:       false
+      disableDefaultUI:       true
+      mapTypeControl:         false
       disableDoubleClickZoom: false
       type:                   "ROADMAP" # HYBRID, ROADMAP, SATELLITE, TERRAIN
 
@@ -234,14 +235,18 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
         marker_container.infowindow = new google.maps.InfoWindow({content: marker_container.description })
         #add the listener associated
         currentMap = this
-        google.maps.event.addListener(marker_container.serviceObject, 'click', @openInfoWindow(currentMap, marker_container.infowindow, marker_container.serviceObject))
+        google.maps.event.addListener(marker_container.serviceObject, 'click', @openInfoWindow(currentMap, marker_container.infowindow, marker_container.serviceObject, marker_container))
 
-  openInfoWindow : (currentMap, infoWindow, marker) ->
+  openInfoWindow : (currentMap, infoWindow, marker, mCont) ->
+
     return ->
       # Close the latest selected marker before opening the current one.
       currentMap.visibleInfoWindow.close() if currentMap.visibleInfoWindow != null
       infoWindow.open(currentMap.serviceObject, marker)
       currentMap.visibleInfoWindow = infoWindow
+      marker.maprID = mCont.id
+      console.log(this.maprID) # so we are in the markers serviceobject here.
+      console.log(marker.maprID)
 
   #////////////////////////////////////////////////////
   #/////////////////        KML      //////////////////

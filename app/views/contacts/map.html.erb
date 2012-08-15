@@ -23,30 +23,35 @@
 
 <script type="text/javascript" charset="utf-8">
   Gmaps.map.callback = function() {
-    var style = [
-          {
-          featureType: 'all',
-          elementType: 'all',
-          stylers: [{ saturation: -20 },{ lightness: -20 },{ gamma: 0.8 }]
-          },
-          { 
-            featureType: "water",
-            elementType: 'all',
-            stylers:[
-              { color: "#646ca7" },
-              {saturation: "-80"},
-              //{lightness:80}
-            ]
-          }
-    ];
-    var styledMapType = new google.maps.StyledMapType(style, {map: map, name: 'Styled Map'  });
-    Gmaps.map.map.mapTypes.set('map-style', styledMapType);
-    Gmaps.map.map.setMapTypeId('map-style');
+    // var style = [
+    //       {
+    //         featureType: 'all',
+    //         elementType: 'all',
+    //         stylers: [{ saturation: -20 },{ lightness: -20 },{ gamma: 0.8 }]
+    //       },
+    //       { 
+    //         featureType: "water",
+    //         elementType: 'all',
+    //         stylers:[
+    //           { color: "#646ca7" },
+    //           {saturation: "-80"},
+    //           //{lightness:80}
+    //         ]
+    //       }
+    // ];
+    // var styledMapType = new google.maps.StyledMapType(style, {map: map, name: 'Styled Map'  });
+    // Gmaps.map.map.mapTypes.set('map-style', styledMapType);
+    // Gmaps.map.map.setMapTypeId('map-style');
 
     google.maps.event.addListener(Gmaps.map.serviceObject, "click", function() {
       //alert("You clicked the map.");
       closeBubble();
     });
+
+    // google.maps.event.addListener($('div[title="Show street map"]'), "click", function() {
+    //   //alert("You clicked the map.");
+    //   closeBubble();
+    // });
 
   // initializing of the Xtra Controls (code in xtraControls.js, Controls are "hidden" via z-index)
   // only of importance when using classic standard gmaps InfoWindows
@@ -78,6 +83,8 @@
       ,pane: "floatPane"
       ,enableEventPropagation: false
   }};
+
+    
 
 </script>
 <% end %>
