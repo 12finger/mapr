@@ -107,3 +107,48 @@ $("#categories li a.all").click(function() {
   showAll();
   return false;
 });
+
+$("#markers_list a").click(function() { 
+  console.log("hey clicked marker!");
+  return false;
+});
+
+
+// = = = = = = = = = = = = =
+// Location Hashes
+// = = = = = = = = = = = = =
+
+ var BASEURL = '';
+ var pasthash = '';
+
+function setLocationHash(url) {
+  pasthash = '#'+url;
+  window.location.hash = url;
+  console.log("hey clicked marker!");
+}
+
+function handleLocationHash() {
+  //hash = window.location.hash.split('_');
+  hash = window.location.hash;
+  // switch(hash[0]) {
+  //   case '#event':
+  //     $('.dates #'+hash[1]+' a').click();
+  //     break;
+  //   case '#day':
+  //     $('#timeline li[rel='+hash[1]+']').click();
+  //     break;
+  // }
+  $('#markers_list a[rel='+hash+']').click();
+  return false;
+}
+
+//  //  //react on changes to location hash
+  window.setInterval(function() {
+    if(pasthash != window.location.hash) {
+      pasthash = window.location.hash;      
+      handleLocationHash();
+    }
+  }, 1000);
+
+
+

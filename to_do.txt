@@ -1,0 +1,10 @@
+
+
+ ** TO DO **
+ °°°°°°°°°°°
+
+
+ - refactor hash code
+ -  add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
+
+

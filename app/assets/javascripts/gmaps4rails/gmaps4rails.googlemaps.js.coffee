@@ -249,6 +249,7 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
       marker.maprID = mCont.id
       console.log(this.maprID) # so we are in the markers serviceobject here.
       console.log(marker.maprID)
+      setLocationHash(mCont.id)
 
   #////////////////////////////////////////////////////
   #/////////////////        KML      //////////////////
