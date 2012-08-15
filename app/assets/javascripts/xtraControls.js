@@ -1,5 +1,6 @@
+
 // here we do some prerequisites for the building of the the Xtra Controls
-// we need to put add them to the map, so the infowindows get some clearance off the margins (especially off the sidebar) 
+// we need to add them to the map, so the infowindows get some clearance off the margins (especially off the sidebar) 
 
 // ====================================
 
@@ -15,12 +16,12 @@
     controlDiv.style.marginTop = '10px';
 
 
-    controlDiv.style.zIndex = '5';
+    controlDiv.style.zIndex = '-5';
     // Set CSS for the control border
     var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = 'grey';
-    controlUI.style.borderStyle = 'solid';
-    controlUI.style.borderWidth = '2px';
+    //controlUI.style.backgroundColor = 'grey';
+    //controlUI.style.borderStyle = 'solid';
+    //controlUI.style.borderWidth = '2px';
     controlUI.style.cursor = 'pointer';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Click to set the map to Home';
@@ -31,7 +32,7 @@
     controlText.style.fontSize = '12px';
     controlText.style.paddingLeft = '4px';
     controlText.style.paddingRight = '4px';
-    controlText.innerHTML = 'MAPR';
+    controlText.innerHTML = '&nbsp;';
     controlUI.appendChild(controlText);
 
   // Setup the click event listeners: simply set the map to Chicago.
@@ -53,12 +54,12 @@
     controlDiv.style.marginTop = '10px';
 
 
-    controlDiv.style.zIndex = '5';
+    controlDiv.style.zIndex = '-5';
     // Set CSS for the control border
     var controlUI = document.createElement('div');
-    controlUI.style.backgroundColor = 'grey';
-    controlUI.style.borderStyle = 'solid';
-    controlUI.style.borderWidth = '2px';
+    //controlUI.style.backgroundColor = 'grey';
+    //controlUI.style.borderStyle = 'solid';
+    //controlUI.style.borderWidth = '2px';
     controlUI.style.cursor = 'pointer';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Click to set the map to Home';
@@ -69,7 +70,7 @@
     controlText.style.fontSize = '12px';
     controlText.style.paddingLeft = '4px';
     controlText.style.paddingRight = '4px';
-    controlText.innerHTML = 'SAT';
+    controlText.innerHTML = '&nbsp;';
     controlUI.appendChild(controlText);
 
   // Setup the click event listeners: simply set the map to Chicago.

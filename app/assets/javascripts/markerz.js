@@ -94,11 +94,11 @@ $("#categories li").click(function() {
       }
     }
     // Basic routine to display markers for each category
-    Gmaps.map.resetSidebarContent();
     closeBubble();
+    Gmaps.map.resetSidebarContent();
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
-    refreshSidebar();
     fitMapToVisibleMarkers();
+    refreshSidebar();
 
     return false;
   });

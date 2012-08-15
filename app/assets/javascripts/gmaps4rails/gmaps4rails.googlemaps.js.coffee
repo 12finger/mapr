@@ -8,8 +8,8 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
     super
     #Map settings
     @map_options =
-      disableDefaultUI:       true
-      mapTypeControl:         false
+      disableDefaultUI:       false
+      mapTypeControl:         true
       disableDoubleClickZoom: false
       type:                   "ROADMAP" # HYBRID, ROADMAP, SATELLITE, TERRAIN
 
@@ -93,10 +93,12 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
       disableDefaultUI:       @map_options.disableDefaultUI
       disableDoubleClickZoom: @map_options.disableDoubleClickZoom
       draggable:              @map_options.draggable
-      panControl: false
-      zoomControl: true
+      panControl:             false
+      zoomControl:            true
       zoomControlOptions:     { style: google.maps.ZoomControlStyle.DEFAULT, position: google.maps.ControlPosition.LEFT_CENTER }
-      scaleControl: true
+      scaleControl:           true
+      streetViewControl:      false
+      styles:                 maprStylez() # located in: application.js
 
     mergedOptions = @mergeObjectWithDefault @map_options.raw, defaultOptions
 
