@@ -398,7 +398,11 @@ class @Gmaps4Rails
     return () ->
       #currentMap.map.panTo(marker.position)
       google.maps.event.trigger(marker, eventType)
-
+      $("#markers_list li").removeClass("active");
+      if $(this).parent().is(".active")
+        $(this).parent().removeClass("active")
+      else
+        $(this).parent().addClass("active")
 
   resetSidebarContent : ->
     if @markers_conf.list_container isnt null

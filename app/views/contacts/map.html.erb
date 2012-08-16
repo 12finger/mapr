@@ -25,8 +25,9 @@
   Gmaps.map.callback = function() {
 
     google.maps.event.addListener(Gmaps.map.serviceObject, "click", function() {
-      //alert("You clicked the map.");
       closeBubble();
+      clearHash();
+      $("#markers_list li").removeClass("active");
     });
 
   // initializing of the Xtra Controls (code in xtraControls.js, Controls are "hidden" via z-index)

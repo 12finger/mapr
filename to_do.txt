@@ -1,10 +1,34 @@
 
 
- ** TO DO **
- °°°°°°°°°°°
+** TO DO **
+°°°°°°°°°°°
 
 
- - refactor hash code
- -  add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
+  - refactor hash code
+  - add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
 
+
+
+
+
+ 
+
+
+  MILESTONES
+
+    - ADD dates (datepicker ...) []
+    - ADD authoriaztion
+    - ADD admin panel to easyly manage events, etc. (oh, how to integrate the adresspicker in active admin?!?)
+
+
+
+
+
+
+  WISHLIST
+
+  - any chance to implememt a smarter fitMapToVisibleMarkers() ???
+    so that no marker gets underneath any categories or the sidebar...
+    Btw:is it desireable at all?
+      inspiration here : http://drupal.org/node/243985
 

@@ -242,14 +242,17 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
   openInfoWindow : (currentMap, infoWindow, marker, mCont) ->
 
     return ->
+      $("#markers_list li").removeClass("active")
+      $("#markers_list li a[rel=#"+mCont.id+"]").parent().addClass("active")
       # Close the latest selected marker before opening the current one.
       currentMap.visibleInfoWindow.close() if currentMap.visibleInfoWindow != null
       infoWindow.open(currentMap.serviceObject, marker)
       currentMap.visibleInfoWindow = infoWindow
-      marker.maprID = mCont.id
-      console.log(this.maprID) # so we are in the markers serviceobject here.
-      console.log(marker.maprID)
       setLocationHash(mCont.id)
+      google.maps.event.addListener infoWindow, 'closeclick', ->
+        $("#markers_list li").removeClass("active")
+        clearHash()
+
 
   #////////////////////////////////////////////////////
   #/////////////////        KML      //////////////////

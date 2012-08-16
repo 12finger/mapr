@@ -113,7 +113,10 @@ html, body {
   min-width: 125px;
 }
 
-
+#markers_list li.active {
+  background-color: #909090;
+  color: black;
+}
 
 .yellow { 
   border: 1px solid black; 
