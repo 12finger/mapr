@@ -1,3 +1,30 @@
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="../lib/jquery.ui.addresspicker.js"></script>
+<script>
+  $(function() {
+    var addresspicker = $( "#addresspicker" ).addresspicker();
+    var addresspickerMap = $( "#addresspicker_map" ).addresspicker({
+      regionBias: "de",
+      elements: {
+        map:      "#contacts-edit-map",
+        lat:      "#lat",
+        lng:      "#lng",
+        locality: '#locality',
+        country:  '#country',
+        type:    '#type' 
+      }
+    });
+    var gmarker = addresspickerMap.addresspicker( "marker");
+    gmarker.setVisible(true);
+    addresspickerMap.addresspicker( "updatePosition");
+    
+  });
+
+  </script>
+
+<div id="contacts-edit-map"></div>
+
+<div id="contacts-form">
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -15,23 +42,50 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  
+  <span> "Active?" </span>
+  <%= f.check_box :isActive %>
+
+</br></br>
+
+  <% Category.all.each do |cat| %>  
+  <%= check_box_tag :category_ids,  
+    cat.id,  
+    @contact.categories.include?(cat),  
+    :name => 'contact[category_ids][]' %>   
+  <%= cat.name %> </br>   
+  <% end %>
+
+</br>
+
+  <div class="field">
+    <%= f.label :startDate %><br />
+    <%= f.text_field :startDate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :endDate %><br />
+    <%= f.text_field :endDate %>
+  </div>
+
+</br>
+
   <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <%= f.text_field :address, :id => "addresspicker_map" %>
   </div>
   <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
+    <%= f.text_field :latitude, :id => "lat" , :type => "hidden"%>
   </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+    <div class="field">
+    <%= f.text_field :longitude, :id => "lng" , :type => "hidden"%>
   </div>
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
+
+  <input id="lat" type="hidden" disabled=disabled>
+  <input id="lng" type="hidden" disabled=disabled> 
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+

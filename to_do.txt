@@ -3,9 +3,8 @@
 ** TO DO **
 °°°°°°°°°°°
 
-
-  - refactor hash code
-  - add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
+- isActive mit in Form einbauen
+- still to do: hashcode: rauswerfen was geht!
 
 
 
@@ -16,7 +15,7 @@
 
   MILESTONES
 
-    - ADD dates (datepicker ...) []
+    - ADD dates (datepicker ...) [] tables...
     - ADD authoriaztion
     - ADD admin panel to easyly manage events, etc. (oh, how to integrate the adresspicker in active admin?!?)
 
@@ -27,8 +26,21 @@
 
   WISHLIST
 
+  - new/edit contact with full-page map and data entry on right hand "sidebar" (similar to frontpage)
+  - nicer css for date/time picker
   - any chance to implememt a smarter fitMapToVisibleMarkers() ???
     so that no marker gets underneath any categories or the sidebar...
     Btw:is it desireable at all?
       inspiration here : http://drupal.org/node/243985
 
+
+
+
+
+
+
+
+  DONE, Finito. Grande!
+
+  - refactor hash code
+  - add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)

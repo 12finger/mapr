@@ -9,9 +9,20 @@
 </div>
 
 <p>
-  <b>Name:</b>
-  <%= @contact.name %>
+  <b>Name:</b> <%= @contact.name %> 
 </p>
+
+<p>
+  <b>Status:</b>
+  <span>
+    <% if @contact.isActive?%>
+      Active 
+    <% else %>
+       Frozen 
+    <% end %>
+  </span>
+</p>
+
 
 <p>
   <b>Category:</b>
@@ -22,6 +33,23 @@
   <b>Address:</b>
   <%= @contact.address %>
 </p>
+<p>
+  <b>Start Date:</b>
+    <% if @contact.startDate != nil %> 
+      <%= @contact.startDate %>
+    <% else %>
+       no Data yet, please edit
+    <% end %>
+</p>
+<p>
+  <b>End Date:</b>
+    <% if @contact.endDate != nil %> 
+      <%= @contact.endDate %>
+    <% else %>
+       single Day event OR please, enter a date!
+    <% end %>
+</p>
+
 
 
 

@@ -6,8 +6,12 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Status</th>
     <th>Address</th>
     <th>Category</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -15,8 +19,25 @@
 <% @contacts.each do |contact| %>
   <tr>
     <td><%= contact.name %></td>
+    <td>
+      <% if contact.isActive?%>
+        active 
+      <% else %>
+       frozen 
+      <% end %>
+    </td> 
     <td><%= contact.address %></td>
     <td><%= contact.categories.collect{|u| u.name}.join(', ') %></td>
+    <% if contact.startDate != nil %> 
+      <td>to <%= contact.startDate %></td>
+    <% else %>
+       <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- </td>
+    <% end %>
+    <% if contact.endDate != nil %> 
+      <td>to <%= contact.endDate %></td>
+    <% else %>
+       <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- </td>
+    <% end %>
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
     <td><%= link_to 'Destroy', contact, confirm: 'Are you sure?', method: :delete %></td>

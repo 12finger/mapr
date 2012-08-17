@@ -384,7 +384,7 @@ class @Gmaps4Rails
       ul = document.getElementById(@markers_conf.list_container)
       li = document.createElement('li')
       aSel = document.createElement('a')
-      aSel.href = 'javascript:void(0); setLocationHash('+marker_container.id+');'
+      aSel.href = 'javascript:void(0);'
       aSel.rel = '#'+marker_container.id
       html = if marker_container.sidebar? then marker_container.sidebar else "Marker"
       aSel.innerHTML = html
@@ -398,7 +398,7 @@ class @Gmaps4Rails
     return () ->
       #currentMap.map.panTo(marker.position)
       google.maps.event.trigger(marker, eventType)
-      $("#markers_list li").removeClass("active");
+      $("#markers_list li").removeClass("active")
       if $(this).parent().is(".active")
         $(this).parent().removeClass("active")
       else

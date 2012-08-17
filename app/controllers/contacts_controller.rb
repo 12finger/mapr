@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
 
   def map
-     @allmarkersjson = Contact.all.to_gmaps4rails do | event, marker|
+     @allmarkersjson = Contact.where("isActive = 1").to_gmaps4rails do | event, marker|
        marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address} </br> #{event.id} "
        ### maybe use a partial here for better MVC separation, but for now above solution suffice
        #@eid = event.id

@@ -4,7 +4,7 @@ class Contact < ActiveRecord::Base
 	has_many :categories, through: :link1s
 	accepts_nested_attributes_for :link1s, allow_destroy: true
   
-    attr_accessible :address, :name, :latitude, :longitude, :categories_attributes, :link1s_attributes, :category_ids
+    attr_accessible :address, :name, :latitude, :longitude, :categories_attributes, :link1s_attributes, :category_ids, :startDate, :endDate, :isActive
     #validates_presence_of :address, :city, :country, :firstname, :lastname, :zip
     #validates :zip , :length => { :minimum => 4 } 
 
