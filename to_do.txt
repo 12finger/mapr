@@ -5,7 +5,7 @@
 
 - isActive mit in Form einbauen
 - still to do: hashcode: rauswerfen was geht!
-
+- new/edit contacts form : check for validity, no empty fields allowed!
 
 
 
