@@ -8,6 +8,7 @@
     <th>Name</th>
     <th>Status</th>
     <th>Address</th>
+    <th>Link</th>
     <th>Category</th>
     <th>Start Date</th>
     <th>End Date</th>
@@ -27,6 +28,7 @@
       <% end %>
     </td> 
     <td><%= contact.address %></td>
+    <td><%= contact.wwwLink %></td>
     <td><%= contact.categories.collect{|u| u.name}.join(', ') %></td>
     <% if contact.startDate != nil %> 
       <td>to <%= contact.startDate %></td>

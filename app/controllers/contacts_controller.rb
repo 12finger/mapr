@@ -4,26 +4,48 @@ class ContactsController < ApplicationController
   # GET /contacts.json
 
   def map
-     @allmarkersjson = Contact.where("isActive = 1").to_gmaps4rails do | event, marker|
-       marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
-       ### maybe use a partial here for better MVC separation, but for now above solution suffice
-       #@eid = event.id
-       #marker.infowindow render_to_string(:partial => "/contacts/infowindow", :locals => { :object => @contact}).gsub(/\n/, '').gsub(/"/, '\"')
-       #marker.title   event.name
-       marker.sidebar "#{event.name}" #{}"i'm the sidebar"
-       marker.json({ :id => event.id, :vcounter => "0", :cat => event.categories.collect{|u| u.id}.join(',') })
-       ### TODO: logic for individual marker pic
-       # marker.picture ({
-       #    "picture" => "/images/markerBig.png",
-       #    "width" => 33,
-       #    "height" => 35,
-       #    "marker_anchor" => [ 5, 10],
-       #    # "shadow_picture" => "/images/morgan.png" ,
-       #    # "shadow_width" => "110",
-       #    # "shadow_height" => "110",
-       #    # "shadow_anchor" => [5, 10],
-       #   }) 
-     end
+
+    @allmarkersjson = Contact.where("isActive = 1").to_gmaps4rails do | event, marker|
+      # prerequisites
+      startDateTimeHash = event.startDate.to_formatted_s(:short).split(" ")
+      endDateTimeHash   = event.endDate.to_formatted_s(:short).split(" ")
+      @startDate        = startDateTimeHash[0] + ". " + startDateTimeHash[1]      
+      @endDate          = endDateTimeHash[0] + ". " + endDateTimeHash[1] 
+      @startTime        = startDateTimeHash[2]
+      @endTime          = endDateTimeHash[2]
+      @startDateMonth   = @startDate.split(".").last
+      @endDateMonth     = @endDate.split(".").last
+      @startDateDigit   = @startDate.split(".").first
+      @endDateDigit     = @endDate.split(".").first
+      @sameMonth        = ( @startDateMonth == @endDateMonth )
+
+      #marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
+      ### maybe use a partial here for better MVC separation, but for now above solution suffice
+      @eid = event.id
+      marker.infowindow render_to_string(:partial => "/contacts/infowindow", :locals => { :object => @contact})
+      marker.title   event.name
+      marker.sidebar "#{event.name}" #{}"i'm the sidebar"
+      marker.json({ :id => event.id, 
+                    :vcounter => "0", 
+                    :cat => event.categories.collect{|u| u.id}.join(','), 
+                    #:sDate => event.startDate.to_formatted_s(:short), 
+                    :sDate => @startDate,
+                    :eDate => @endDate,
+                    :sTime => @startTime,
+                    :eTime => @endTime
+      })
+      ### TODO: logic for individual marker pic
+       marker.picture ({
+          "picture" => "/images/MarkerPink.png",
+          "width" => 32,
+          "height" => 32,
+          "marker_anchor" => [ 5, 10],
+          # "shadow_picture" => "/images/morgan.png" ,
+          # "shadow_width" => "110",
+          # "shadow_height" => "110",
+          # "shadow_anchor" => [5, 10],
+         }) 
+    end
   end
 
   def gmaps4rails_sidebar

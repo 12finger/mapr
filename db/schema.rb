@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816155701) do
+ActiveRecord::Schema.define(:version => 20120817225929) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120816155701) do
     t.datetime "startDate"
     t.datetime "endDate"
     t.boolean  "isActive"
+    t.string   "wwwLink"
   end
 
   create_table "link1s", :force => true do |t|

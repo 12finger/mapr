@@ -1,20 +1,35 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% contact = Contact.find(@eid) %>
 
-  <tr>
-    <td><%= contact.name %></td>
-    <td><%= contact.address %></td>
-    <td><%= contact.categories.collect{|u| u.name}.join(', ') %></td>
-  </tr>
+<div id="bubbleDate">
+<% if (@startDate == @endDate) %>
+  <%= @startDate %>
+<% else %>
+  <% if  @sameMonth %>
+    <%= @startDateDigit + ". - " + @endDate %>
+  <% else %>
+    <%= @startDate + " - " + @endDate %>
+  <% end %>
+<% end %>
 
-</table>
+<%= "  " + @startTime + " - " + @endTime %> 
 
-<br />
+</br>
+  <%= contact.categories.collect{|u| u.name}.join(', ') %>
+
+</div>
+
+<div id="bubbleMiddle">
+
+  <span id="bubbleName">  <%= contact.name %> </span>
+
+</br>
+
+<%= contact.address %>
+</br>
+<% if contact.wwwLink != nil %>
+  <a href="http://www.<%= contact.wwwLink %>" target="_blank"><%= contact.wwwLink %></a>
+<% end %>
+</div>
+
+

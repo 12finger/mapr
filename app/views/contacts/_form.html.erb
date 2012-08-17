@@ -48,6 +48,11 @@
 
 </br></br>
 
+  <div class="field">
+    <%= f.label "Link" %><br />
+    <%= f.text_field :wwwLink %>
+  </div>
+
   <% Category.all.each do |cat| %>  
   <%= check_box_tag :category_ids,  
     cat.id,  
