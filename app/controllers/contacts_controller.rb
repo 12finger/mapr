@@ -7,17 +7,28 @@ class ContactsController < ApplicationController
 
     @allmarkersjson = Contact.where("isActive = 1").to_gmaps4rails do | event, marker|
       # prerequisites
-      startDateTimeHash = event.startDate.to_formatted_s(:short).split(" ")
-      endDateTimeHash   = event.endDate.to_formatted_s(:short).split(" ")
-      @startDate        = startDateTimeHash[0] + ". " + startDateTimeHash[1]      
-      @endDate          = endDateTimeHash[0] + ". " + endDateTimeHash[1] 
-      @startTime        = startDateTimeHash[2]
-      @endTime          = endDateTimeHash[2]
-      @startDateMonth   = @startDate.split(".").last
-      @endDateMonth     = @endDate.split(".").last
-      @startDateDigit   = @startDate.split(".").first
-      @endDateDigit     = @endDate.split(".").first
-      @sameMonth        = ( @startDateMonth == @endDateMonth )
+      @startDate,@startTime,@startDateMonth,@startDateDigit = ""
+      @haveStart = false
+      unless (!event.startDate)
+        @haveStart        = true
+        startDateTimeHash = event.startDate.to_formatted_s(:short).split(" ")
+        @startDate        = startDateTimeHash[0].to_i.to_s + " " + startDateTimeHash[1]              
+        @startDateDigit   = startDateTimeHash[0].to_i.to_s
+        @startDateMonth   = startDateTimeHash[1]
+        @startTime        = startDateTimeHash[2]
+      end
+      @endDate,@endTime,@endDateMonth,@endDateDigit = ""
+      @haveEnd = false
+      unless (!event.endDate)
+        @haveEnd          = true
+        endDateTimeHash   = event.endDate.to_formatted_s(:short).split(" ")
+        @endDate          = endDateTimeHash[0].to_i.to_s + " " + endDateTimeHash[1] 
+        @endDateDigit     = endDateTimeHash[0].to_i.to_s
+        @endDateMonth     = endDateTimeHash[1]
+        @endTime          = endDateTimeHash[2]        
+      end
+      @sameMonth = false       
+      @sameMonth = ( @startDateMonth == @endDateMonth )
 
       #marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
       ### maybe use a partial here for better MVC separation, but for now above solution suffice

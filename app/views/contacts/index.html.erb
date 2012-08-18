@@ -31,12 +31,12 @@
     <td><%= contact.wwwLink %></td>
     <td><%= contact.categories.collect{|u| u.name}.join(', ') %></td>
     <% if contact.startDate != nil %> 
-      <td>to <%= contact.startDate %></td>
+      <td><%= contact.startDate %></td>
     <% else %>
        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- </td>
     <% end %>
     <% if contact.endDate != nil %> 
-      <td>to <%= contact.endDate %></td>
+      <td><%= contact.endDate %></td>
     <% else %>
        <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- </td>
     <% end %>

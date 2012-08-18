@@ -2,21 +2,46 @@
 <% contact = Contact.find(@eid) %>
 
 <div id="bubbleDate">
-<% if (@startDate == @endDate) %>
-  <%= @startDate %>
-<% else %>
-  <% if  @sameMonth %>
-    <%= @startDateDigit + ". - " + @endDate %>
-  <% else %>
-    <%= @startDate + " - " + @endDate %>
+
+  <% if (@haveStart and @haveEnd) %>
+    <% if (@startDate == @endDate) %>
+      <%= @startDate %> 
+    <% elsif @sameMonth %>
+      <%= @startDateDigit + " - " + @endDate %>
+    <% else %>
+      <%= @startDate + " - " + @endDate %>
+    <% end %>
+  <% else %> 
+    <% if (@haveStart and !@haveEnd) %>
+      <%= @startDate %>  
+    <% elsif (!@haveStart and @haveEnd) %>
+      <%= @endDate %>
+    <% else%>
+     (date to be announced)
+    <% end %>
   <% end %>
-<% end %>
+  
+  <% if (@haveStart || @haveEnd) %>
+  |
+  <% end %>
 
-<%= "  " + @startTime + " - " + @endTime %> 
-
-</br>
+  <% if (@haveStart and @haveEnd) %>
+    <% if (@startTime == @endTime) %>
+      <%= @startTime %>
+    <% else %>
+      <%= "  " + @startTime + " - " + @endTime %> 
+    <% end %>    
+  <% else %>
+    <% if (@haveStart and !@haveEnd) %>
+      <%= @startTime %>  
+    <% elsif (!@haveStart and @haveEnd) %>
+      <%= @endTime %>
+    <% else%>
+    <% end %>
+  <% end %>
+  
+  </br>
   <%= contact.categories.collect{|u| u.name}.join(', ') %>
-
 </div>
 
 <div id="bubbleMiddle">
