@@ -50,7 +50,7 @@ class ContactsController < ApplicationController
           "picture" => "/images/MarkerPink.png",
           "width" => 32,
           "height" => 32,
-          "marker_anchor" => [ 5, 10],
+          # "marker_anchor" => [ 5, 10],
           # "shadow_picture" => "/images/morgan.png" ,
           # "shadow_width" => "110",
           # "shadow_height" => "110",
