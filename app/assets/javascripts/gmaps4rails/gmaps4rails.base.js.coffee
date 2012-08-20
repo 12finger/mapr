@@ -384,12 +384,13 @@ class @Gmaps4Rails
       ul = document.getElementById(@markers_conf.list_container)
       li = document.createElement('li')
       aSel = document.createElement('a')
-      aSel.href = 'javascript:void(0);'
+      #aSel.href = 'javascript:void(0);'
       aSel.rel = '#'+marker_container.id
       html = if marker_container.sidebar? then marker_container.sidebar else "Marker"
       aSel.innerHTML = html
       currentMap = this
-      aSel.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
+      #aSel.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
+      li.onclick = @sidebar_element_handler(currentMap, marker_container.serviceObject, 'click')
       li.appendChild(aSel)
       ul.appendChild(li)
 
@@ -399,10 +400,10 @@ class @Gmaps4Rails
       #currentMap.map.panTo(marker.position)
       google.maps.event.trigger(marker, eventType)
       $("#markers_list li").removeClass("active")
-      if $(this).parent().is(".active")
-        $(this).parent().removeClass("active")
+      if $(this).is(".active")
+        $(this).removeClass("active")
       else
-        $(this).parent().addClass("active")
+        $(this).addClass("active")
 
   resetSidebarContent : ->
     if @markers_conf.list_container isnt null

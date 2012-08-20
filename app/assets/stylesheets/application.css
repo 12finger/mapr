@@ -129,12 +129,37 @@ html, body {
 
 #markers_list li {
   min-width: 125px;
+  list-style: none;
 }
-
+#markers_list li:before {
+  /* For a round bullet */
+  content:'\2022';
+  /* For a square bullet */
+  /*content:'\25A0';*/
+  display: block;
+  position: relative;
+  max-width: 0px;
+  max-height: 0px;
+  left: -12px;
+  top: -0px;
+  color: grey;
+  font-size: 12px;
+}
 #markers_list li.active {
   background-color: #d4d4d4;
   color: black;
 }
+#markers_list li:hover a {
+  background-color: black;
+  color: white;
+}
+#markers_list li:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+
+}
+
 
 .yellow { 
   border: 1px solid black; 

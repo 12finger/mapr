@@ -90,7 +90,6 @@ $("#categories li").click(function() {
       
       if( ($("#categories li").length == $("#categories li.active").length + 1) || $("#categories li.active").length == 0 ) {
         showAll();
-        return false;
       }
     }
     // Basic routine to display markers for each category
