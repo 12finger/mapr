@@ -29,15 +29,6 @@ html, body {
 }
 
 .map_container {
-  /*padding: 6px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ccc #ccc #999 #ccc;
-  -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-  box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-  width: 800px;
-  height: 100%;*/
   position: absolute;
   z-index: 1;
   left: 0;
@@ -102,11 +93,6 @@ html, body {
   color:white;
 }
 
-/*#categories li a:hover {
-  background:white;
-  color: black
-}*/
-
 #categories li a:active,
 #categories li a:focus {
   background:red;
@@ -119,17 +105,18 @@ html, body {
   top: 50px;
   right: 23px;
   max-height: 70%;
-  overflow-y: auto;
+  width: 178px;
 }
 
 #sidebar-head {
+
   padding: 13px 18px 15px 15px;
   background-color: grey;
 }
 
 #sidebar-head span {
   padding: 3px 4px 3px 3px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 #sidebar-head .active {
@@ -139,9 +126,7 @@ html, body {
 
 #search-form { 
   background-color: white;
-  /*margin-left: -284px;*/
   margin-bottom: 1px;
-  /*width: 460px;*/
   padding: 4px 3px 6px 14px;
   display: none;
   border: 2px solid black;
@@ -156,18 +141,22 @@ html, body {
 }
 
 #markers_list  {
-/*  position: absolute;
+  position: absolute;
   z-index: 2000;
-  top: 50px;
+  top: 97px;
   right: 23px;
-  max-width: 190px;
-  max-height: 50%;*/
-  max-height: 30%;
+  width: 130px;
+  max-height: 60%;
+  overflow-y: auto; 
   overflow-y: auto;
   padding: 13px 18px 15px 30px;
   background-color: white;
   background: white;
   margin-top: -1px;
+}
+
+#no_markers_notice {
+  display: none;
 }
 
 #markers_list li {

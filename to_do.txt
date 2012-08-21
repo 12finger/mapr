@@ -3,11 +3,12 @@
 ** TO DO **
 °°°°°°°°°°°
 
-
+- marker logic:
+  - if there is no marker to show, then do nothing, don't pan to "nowhere"!
+    - give nice messages!
 - still to do: hashcode: rauswerfen was geht!
 - new/edit contacts form : check for validity, no empty fields should be allowed!
 - sidebar:  - some padding for the markers list UL
-            - move "onclick" JS from A to LI element, so easisier, better and more meaningfull highlightting via CSS is possible.
 
 
 

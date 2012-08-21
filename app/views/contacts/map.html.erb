@@ -23,9 +23,9 @@
       <%= text_field_tag(:end) %>
     <% end %>
   </div>
-  <ul id="markers_list">  </ul>
 </div>
 
+<ul id="markers_list">  </ul>
 
 
 <%= gmaps("markers" => { "data" => @allmarkersjson, "options" => { "do_clustering" => false, "list_container" => "markers_list", "rich_marker" => true , "auto_zoom" => true, #"custom_infowindow_class" => "yellow"  

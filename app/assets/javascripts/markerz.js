@@ -32,12 +32,31 @@
     }
   }
 
+  var anyMarkers = true;
   function refreshSidebar(arg) { 
+    var howManyMarkers = 0;
     for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
       if (Gmaps.map.markers[i].serviceObject.getVisible() == true ) {
         Gmaps.map.createSidebar(Gmaps.map.markers[i]);
+        howManyMarkers ++;
       } 
     };
+    if (howManyMarkers < 1 ) {
+      anyMarkers = false;
+      createSidebarNotice();
+    }
+    else {
+      anyMarkers = true;
+    }
+
+  };
+
+  function createSidebarNotice() {
+    ul = document.getElementById("markers_list");
+    notice = document.createElement('div');
+    html = "sorry, there are no events matching your criteria."
+    notice.innerHTML = html;
+    return ul.appendChild(notice);
   };
 
   function closeBubble(arg) { 
@@ -59,12 +78,14 @@
   }
 
   function fitMapToVisibleMarkers(arg) {
-    var newbounds = new google.maps.LatLngBounds();
-    for (var i = 0; i < Gmaps.map.markers.length; i++) {
-        if (Gmaps.map.markers[i].serviceObject.getVisible())
-        newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
+    if (anyMarkers) {
+      var newbounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < Gmaps.map.markers.length; i++) {
+          if (Gmaps.map.markers[i].serviceObject.getVisible())
+          newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
+      }
+      Gmaps.map.map.fitBounds(newbounds);
     }
-    Gmaps.map.map.fitBounds(newbounds);
   }
 
 $("#categories li").click(function() {
@@ -98,8 +119,8 @@ $("#categories li").click(function() {
     clearHash();
     Gmaps.map.resetSidebarContent();
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
-    fitMapToVisibleMarkers();
     refreshSidebar();
+    fitMapToVisibleMarkers();
 
     return false;
 });
@@ -153,14 +174,16 @@ window.setInterval(function() {
 // Search by Date
 // = = = = = = = = = = = = =
 
-//var baseURL = 'http://mapr.dev';
-var baseURL = 'http://mapr.12finger.com';
+var baseURL = 'http://mapr.dev';
+//var baseURL = 'http://mapr.12finger.com';
 
 $("#display-all-button").click(function() {
     showAll();     
     $("#search-form").hide();
     $("#search-button").removeClass("active");
     $(this).addClass("active");
+    $("#markers_list").css("top", "97px");
+    $("#markers_list").css("max-height", "60%");    
     $.ajax({
       url: baseURL,
       type: "GET",
@@ -175,14 +198,13 @@ $("#display-all-button").click(function() {
 });
 
 $("#search-button").click(function() {
-    //$("#search-form").fadeIn();      
-         $("#search-form").fadeTo("slow", 1.00, function(){ //fade
-             $(this).slideDown("slow", function() { //slide up
-                 //$(this).remove(); //then remove from the DOM
-             });
-         });
+    $("#search-form").show("fast")
     $("#display-all-button").removeClass("active");
     $(this).addClass("active");
+    $("#markers_list").css("top", "176px");
+    $("#markers_list").css("max-height", "50%");
+    showAll();
+    Gmaps.map.resetSidebarContent();
     return false;
 });
 
@@ -198,6 +220,7 @@ $('#searchByDate').submit( function(e){
     success: function(result){
       showAll();
       Gmaps.map.replaceMarkers(result);
+      refreshSidebar();
     }
 
   });
