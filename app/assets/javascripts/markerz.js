@@ -90,6 +90,7 @@ $("#categories li").click(function() {
       
       if( ($("#categories li").length == $("#categories li.active").length + 1) || $("#categories li.active").length == 0 ) {
         showAll();
+        return false;
       }
     }
     // Basic routine to display markers for each category
@@ -101,7 +102,7 @@ $("#categories li").click(function() {
     refreshSidebar();
 
     return false;
-  });
+});
 
 $("#categories li a.all").click(function() { 
   showAll();
@@ -117,7 +118,6 @@ $("#markers_list a").click(function() {
 // Location Hashes
 // = = = = = = = = = = = = =
 
- var BASEURL = '';
  var pasthash = '';
 
  function clearHash () { 
@@ -146,6 +146,67 @@ window.setInterval(function() {
       // this time is needed to wait till the map gets loaded so the marker is properly panned
   }
 }, 150);
+
+
+
+// = = = = = = = = = = = = =
+// Search by Date
+// = = = = = = = = = = = = =
+
+//var baseURL = 'http://mapr.dev';
+var baseURL = 'http://mapr.12finger.com';
+
+$("#display-all-button").click(function() {
+    showAll();     
+    $("#search-form").hide();
+    $("#search-button").removeClass("active");
+    $(this).addClass("active");
+    $.ajax({
+      url: baseURL,
+      type: "GET",
+      data: { getAll: "true" },
+      dataType: "json",
+      cache: false,
+      success: function(result){
+        Gmaps.map.replaceMarkers(result);
+      }
+  });
+
+});
+
+$("#search-button").click(function() {
+    //$("#search-form").fadeIn();      
+         $("#search-form").fadeTo("slow", 1.00, function(){ //fade
+             $(this).slideDown("slow", function() { //slide up
+                 //$(this).remove(); //then remove from the DOM
+             });
+         });
+    $("#display-all-button").removeClass("active");
+    $(this).addClass("active");
+    return false;
+});
+
+$('#searchByDate').submit( function(e){
+  e.preventDefault()
+  var f = $(this).serialize();
+  $.ajax({
+    url: baseURL+"/search/",
+    data: f,
+    type: "GET",
+    dataType: "json",
+    cache: false,
+    success: function(result){
+      showAll();
+      Gmaps.map.replaceMarkers(result);
+    }
+
+  });
+});
+
+
+
+
+
 
 
 

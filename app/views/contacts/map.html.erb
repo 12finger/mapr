@@ -8,8 +8,24 @@
   </ul>
 </div>
 
+<div id="sidebar">
+  <div id="sidebar-head">
+    <span id="display-all-button" class="active">ALL DATES</span>  |
+    <span id="search-button"> Search</span> 
+  </div>
+  <div id="search-form">
+    Search for events:
+    <%= form_tag("/s", :method => "get", :id => 'searchByDate') do %>
+      <%= label_tag(:start, "from:") %>
+      <%= text_field_tag(:start) %>
+      </br>
+      <%= label_tag(:end, "to:") %>
+      <%= text_field_tag(:end) %>
+    <% end %>
+  </div>
+  <ul id="markers_list">  </ul>
+</div>
 
-<ul id="markers_list">  </ul>
 
 
 <%= gmaps("markers" => { "data" => @allmarkersjson, "options" => { "do_clustering" => false, "list_container" => "markers_list", "rich_marker" => true , "auto_zoom" => true, #"custom_infowindow_class" => "yellow"  

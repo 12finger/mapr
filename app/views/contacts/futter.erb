@@ -1,0 +1,12 @@
+  <% case %>
+  <% when (@startDate == @endDate) %>
+    1<%= @startDate %> 
+  <% when @sameMonth %>
+    2<%= @startDateDigit + ". - " + @endDate %>
+  <% when ( @haveStart and !@haveEnd)%>
+    3<%= @startDate %>  
+  <% when ( !@haveStart and @haveEnd)%>
+    4<%= @endDate %>        
+  <% when (@haveStart and @haveEnd) %>
+    5<%= @startDate + " - " + @endDate %>
+  <% end %>

@@ -5,6 +5,7 @@ Mapr::Application.routes.draw do
   resources :contacts
 
   match '/' => "contacts#map"
+  match '/search' => "contacts#searchDate"
   #match 'Karte' => "contacts#map"
   match 'Kontakte' => "contacts#index"
 
