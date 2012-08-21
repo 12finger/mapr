@@ -51,6 +51,13 @@
 
   };
 
+  function checkForResults(arg) { 
+    if (Gmaps.map.markers.length < 1) {
+      createSidebarNotice("sorry, there are no events matching your date range.");
+    }
+  };
+
+
   function createSidebarNotice(text) {
     ul = document.getElementById("markers_list");
     notice = document.createElement('div');
@@ -220,6 +227,7 @@ $('#searchByDate').submit( function(e){
     success: function(result){
       showAll();
       Gmaps.map.replaceMarkers(result);
+      checkForResults();
     }
 
   });

@@ -3,12 +3,14 @@
 ** TO DO **
 °°°°°°°°°°°
 
+- SEARCH: allow search to give results, even if the event is allready running (multiple day events currently doesnt show up as result when search start date is after event_startdate), "include" logic?
 - marker logic:
   - if there is no marker to show, then do nothing, don't pan to "nowhere"!
     - give nice messages!
 - still to do: hashcode: rauswerfen was geht!
-- new/edit contacts form : check for validity, no empty fields should be allowed!
-- sidebar:  - some padding for the markers list UL
+- new/edit contacts form : 
+  - check for validity, no empty fields should be allowed!
+  - check for propper date range, dont allow enddate to be before startdate
 
 
 
@@ -17,7 +19,6 @@
 
   MILESTONES
 
-    - ADD dates (datepicker ...) [] tables...
     - ADD authoriaztion
     - ADD admin panel to easyly manage events, etc. (oh, how to integrate the adresspicker in active admin?!?)
 
@@ -44,6 +45,10 @@
 
 DONE, Finito. Grande!
 
+
+
+- sidebar:  - some padding for the markers list UL
+- ADD dates (datepicker ...) [] tables...
 - isActive mit in Form einbauen
 - refactor hash code
 - add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
