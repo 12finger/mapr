@@ -174,8 +174,7 @@ window.setInterval(function() {
 // Search by Date
 // = = = = = = = = = = = = =
 
-//var baseURL = 'http://mapr.dev';
-var baseURL = 'http://mapr.12finger.com';
+// baseURL is at /app/assets/javascripts/baseURL.js
 
 $("#display-all-button").click(function() {
     showAll();     
@@ -220,7 +219,6 @@ $('#searchByDate').submit( function(e){
     success: function(result){
       showAll();
       Gmaps.map.replaceMarkers(result);
-      refreshSidebar();
     }
 
   });
