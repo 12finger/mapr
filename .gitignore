@@ -27,4 +27,4 @@ Icon?
 *.sublime-workspace
 
 config/database.yml
-app/assets/javascripts/baseURL.js
+#app/assets/javascripts/base_url.js

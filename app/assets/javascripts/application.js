@@ -15,7 +15,7 @@
 //= require jquery-ui
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
-//= baseURL
+//= base_url
 //= require_tree .
 
 
