@@ -43,7 +43,7 @@
     };
     if (howManyMarkers < 1 ) {
       anyMarkers = false;
-      createSidebarNotice();
+      createSidebarNotice("sorry, there are no events matching your criteria.");
     }
     else {
       anyMarkers = true;
@@ -51,10 +51,10 @@
 
   };
 
-  function createSidebarNotice() {
+  function createSidebarNotice(text) {
     ul = document.getElementById("markers_list");
     notice = document.createElement('div');
-    html = "sorry, there are no events matching your criteria."
+    html = text
     notice.innerHTML = html;
     return ul.appendChild(notice);
   };
@@ -204,6 +204,7 @@ $("#search-button").click(function() {
     $("#markers_list").css("max-height", "50%");
     showAll();
     Gmaps.map.resetSidebarContent();
+    createSidebarNotice("enter a date range to get results");
     return false;
 });
 
