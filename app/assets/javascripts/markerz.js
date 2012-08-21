@@ -174,8 +174,8 @@ window.setInterval(function() {
 // Search by Date
 // = = = = = = = = = = = = =
 
-var baseURL = 'http://mapr.dev';
-//var baseURL = 'http://mapr.12finger.com';
+//var baseURL = 'http://mapr.dev';
+var baseURL = 'http://mapr.12finger.com';
 
 $("#display-all-button").click(function() {
     showAll();     
