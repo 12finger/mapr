@@ -5,17 +5,17 @@
 
   <% if (@haveStart and @haveEnd) %>
     <% if (@startDate == @endDate) %>
-      <%= @startDate %> 
+      <%= @startDate + " " + @startDateYear %> 
     <% elsif @sameMonth %>
-      <%= @startDateDigit + " - " + @endDate %>
+      <%= @startDateDigit + " - " + @endDate + " " + @startDateYear %>
     <% else %>
-      <%= @startDate + " - " + @endDate %>
+      <%= @startDate + " " + @startDateYear + " - " + @endDate + " " + @endDateYear  %>
     <% end %>
   <% else %> 
     <% if (@haveStart and !@haveEnd) %>
-      <%= @startDate %>  
+      <%= @startDate + " " + @startDateYear %>  
     <% elsif (!@haveStart and @haveEnd) %>
-      <%= @endDate %>
+      <%= @endDate + " " + @endDateYear %>
     <% else%>
      (date to be announced)
     <% end %>

@@ -14,7 +14,9 @@ class ContactsController < ApplicationController
         @startDate        = startDateTimeHash[0].to_i.to_s + " " + startDateTimeHash[1]              
         @startDateDigit   = startDateTimeHash[0].to_i.to_s
         @startDateMonth   = startDateTimeHash[1]
+        @startDateYear    = event.startDate.to_s.split("-").first
         @startTime        = startDateTimeHash[2]
+
       end
       @endDate,@endTime,@endDateMonth,@endDateDigit = ""
       @haveEnd = false
@@ -24,6 +26,7 @@ class ContactsController < ApplicationController
         @endDate          = endDateTimeHash[0].to_i.to_s + " " + endDateTimeHash[1] 
         @endDateDigit     = endDateTimeHash[0].to_i.to_s
         @endDateMonth     = endDateTimeHash[1]
+        @endDateYear      = event.endDate.to_s.split("-").first
         @endTime          = endDateTimeHash[2]        
       end
       @sameMonth = false       
@@ -83,7 +86,9 @@ class ContactsController < ApplicationController
         @startDate        = startDateTimeHash[0].to_i.to_s + " " + startDateTimeHash[1]              
         @startDateDigit   = startDateTimeHash[0].to_i.to_s
         @startDateMonth   = startDateTimeHash[1]
+        @startDateYear    = event.startDate.to_s.split("-").first
         @startTime        = startDateTimeHash[2]
+
       end
       @endDate,@endTime,@endDateMonth,@endDateDigit = ""
       @haveEnd = false
@@ -93,6 +98,7 @@ class ContactsController < ApplicationController
         @endDate          = endDateTimeHash[0].to_i.to_s + " " + endDateTimeHash[1] 
         @endDateDigit     = endDateTimeHash[0].to_i.to_s
         @endDateMonth     = endDateTimeHash[1]
+        @endDateYear      = event.endDate.to_s.split("-").first
         @endTime          = endDateTimeHash[2]        
       end
       @sameMonth = false       

@@ -155,7 +155,7 @@ $("#categories li").click(function() {
     Gmaps.map.resetSidebarContent();
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
     refreshSidebar(); // AND get visible Markers Counter
-    fitMapToVisibleMarkers();
+    fitMapToVisibleMarkers(); // avoid marker flickr by executing this only when "visible Markers Counter" changed
 
 
 
