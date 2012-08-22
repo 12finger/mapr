@@ -112,7 +112,7 @@
           }
       }
         if (howManyMarkers == 1) {
-          console.log("one marker only, code goes here") 
+          console.log("one marker only") 
           Gmaps.map.serviceObject.panTo(Gmaps.map.markers[oneMarker].serviceObject.position);
         }
         else {
@@ -214,13 +214,13 @@ window.setInterval(function() {
 // baseURL is at /app/assets/javascripts/baseURL.js
 
 $("#display-all-button").click(function() {
-    showAll(); 
-    Gmaps.map.resetSidebarContent();
+    $("#categories li.active").removeClass("active");
     $("#search-form").hide();
     $("#search-button").removeClass("active");
     $(this).addClass("active");
     $("#markers_list").css("top", "97px");
     $("#markers_list").css("max-height", "60%");    
+    Gmaps.map.resetSidebarContent();
     $.ajax({
       url: baseURL,
       type: "GET",
