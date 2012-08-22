@@ -12,20 +12,22 @@
           if ( $.inArray( catNum , markersArray[i].cat.split(",")) !== -1 ) {
               if ( !(toggleVisi) ) {
                 Gmaps.map.markers[i].vcounter ++;
+                console.log("M" + i + " incremented" );
               } else {
                 Gmaps.map.markers[i].vcounter --;
+                console.log("M" + i + " decremented" );
               }
               if ( (Gmaps.map.markers[i].serviceObject.getVisible() && Gmaps.map.markers[i].vcounter == 0 ) ) {
                 Gmaps.map.hideMarker(Gmaps.map.markers[i]);
                 Gmaps.map.markerClusterer.removeMarker(Gmaps.map.markers[i].serviceObject);
-                console.log( i + "setInvisible" );
+                console.log("M" + i + " setInvisible" );
               } else {
                 if (Gmaps.map.markers[i].serviceObject.getVisible() == true) {
-                    console.log( i + "alreadyVisible, do nothing" );
+                    console.log("M" + i + " alreadyVisible, do nothing" );
                 } else {
                   Gmaps.map.showMarker(Gmaps.map.markers[i]);
                   Gmaps.map.markerClusterer.addMarker(Gmaps.map.markers[i].serviceObject);
-                  console.log( i + "setVisible" ); 
+                  console.log("M" + i + " setVisible" ); 
                 }  
               }
           }
@@ -40,8 +42,9 @@
   }
 
   var anyMarkers = true;
+  var howManyMarkers = 0;
   function refreshSidebar(arg) { 
-    var howManyMarkers = 0;
+    howManyMarkers = 0;
     for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
       if (Gmaps.map.markers[i].serviceObject.getVisible() == true ) {
         Gmaps.map.createSidebar(Gmaps.map.markers[i]);
@@ -87,7 +90,7 @@
     Gmaps.map.showMarkers(); 
     for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
       Gmaps.map.markerClusterer.addMarker(Gmaps.map.markers[i].serviceObject);
-      console.log( i + "added , and repainted");
+      console.log("M" + i + "added , and repainted");
     };
     Gmaps.map.resetSidebarContent();
     refreshSidebar();
@@ -96,14 +99,26 @@
     displayAll = true;
   }
 
+  var howManyMarkersToFit = 0;
   function fitMapToVisibleMarkers(arg) {
+    howManyMarkersToFit = 0
     if (anyMarkers) {
       var newbounds = new google.maps.LatLngBounds();
       for (var i = 0; i < Gmaps.map.markers.length; i++) {
-          if (Gmaps.map.markers[i].serviceObject.getVisible())
-          newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
+          if (Gmaps.map.markers[i].serviceObject.getVisible()) {
+            newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
+            howManyMarkersToFit ++;
+            oneMarker = i;
+          }
       }
-      Gmaps.map.map.fitBounds(newbounds);
+        if (howManyMarkers == 1) {
+          console.log("one marker only, code goes here") 
+          Gmaps.map.serviceObject.panTo(Gmaps.map.markers[oneMarker].serviceObject.position);
+        }
+        else {
+          Gmaps.map.map.fitBounds(newbounds);
+          console.log("number of visible Markers changed, so we needed to fitNewBounds!")
+        }
     }
     Gmaps.map.markerClusterer.repaint();
   }
@@ -139,7 +154,7 @@ $("#categories li").click(function() {
     clearHash();
     Gmaps.map.resetSidebarContent();
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
-    refreshSidebar();
+    refreshSidebar(); // AND get visible Markers Counter
     fitMapToVisibleMarkers();
 
 
