@@ -47,14 +47,12 @@
     });
 
     // set the zoom after fitbounds, 
-    Gmaps.map.map.initialZoom = true;
     google.maps.event.addListener(Gmaps.map.map, 'zoom_changed', function() {
         zoomChangeBoundsListener = 
             google.maps.event.addListener(Gmaps.map.map, 'bounds_changed', function(event) {
-                if (this.getZoom() > 15 && this.initialZoom == true) {
+                if (this.getZoom() > 15) {
                     // Change max/min zoom here
                     this.setZoom(6);
-                    //this.initialZoom = false;
                 }
             google.maps.event.removeListener(zoomChangeBoundsListener);
         });
