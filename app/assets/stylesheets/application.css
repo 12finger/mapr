@@ -129,6 +129,12 @@ html, body {
   color: white;
 }
 
+#sidebar-head .active:hover {
+  background-color: black;
+  color: white;
+  cursor: default;
+}
+
 #search-form { 
   background-color: white;
   margin-bottom: 1px;

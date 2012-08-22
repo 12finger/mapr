@@ -1,12 +1,12 @@
-     
+  
   var displayAll = true;
-
+  
   function findMarkersByCatAndToggleThem ( markersArray, catNum, toggleVisi ) {
     if ( displayAll ) {
       Gmaps.map.hideMarkers();
+      Gmaps.map.markerClusterer.clearMarkers();
       displayAll = false;        
     } 
-    var matches = [];
     var markerLength = markersArray.length;
     for ( var i = 0; i < markerLength; i++ ) {
           if ( $.inArray( catNum , markersArray[i].cat.split(",")) !== -1 ) {
@@ -17,10 +17,17 @@
               }
               if ( (Gmaps.map.markers[i].serviceObject.getVisible() && Gmaps.map.markers[i].vcounter == 0 ) ) {
                 Gmaps.map.hideMarker(Gmaps.map.markers[i]);
-                console.log( "setVisible" );
+                Gmaps.map.markerClusterer.removeMarker(Gmaps.map.markers[i].serviceObject);
+                console.log( i + "setInvisible" );
               } else {
-                Gmaps.map.showMarker(Gmaps.map.markers[i]);
-                console.log( "inv" ); }                  
+                if (Gmaps.map.markers[i].serviceObject.getVisible() == true) {
+                    console.log( i + "alreadyVisible, do nothing" );
+                } else {
+                  Gmaps.map.showMarker(Gmaps.map.markers[i]);
+                  Gmaps.map.markerClusterer.addMarker(Gmaps.map.markers[i].serviceObject);
+                  console.log( i + "setVisible" ); 
+                }  
+              }
           }
     }
   };
@@ -78,9 +85,14 @@
     resetvcounter();
     closeBubble();
     Gmaps.map.showMarkers(); 
+    for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
+      Gmaps.map.markerClusterer.addMarker(Gmaps.map.markers[i].serviceObject);
+      console.log( i + "added , and repainted");
+    };
     Gmaps.map.resetSidebarContent();
     refreshSidebar();
     Gmaps.map.adjustMapToBounds();
+    Gmaps.map.markerClusterer.repaint();
     displayAll = true;
   }
 
@@ -93,6 +105,7 @@
       }
       Gmaps.map.map.fitBounds(newbounds);
     }
+    Gmaps.map.markerClusterer.repaint();
   }
 
 $("#categories li").click(function() {
@@ -128,6 +141,8 @@ $("#categories li").click(function() {
     findMarkersByCatAndToggleThem( Gmaps.map.markers, $(this).attr("rel"), decrementV );
     refreshSidebar();
     fitMapToVisibleMarkers();
+
+
 
     return false;
 });
