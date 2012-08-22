@@ -184,7 +184,8 @@ window.setInterval(function() {
 // baseURL is at /app/assets/javascripts/baseURL.js
 
 $("#display-all-button").click(function() {
-    showAll();     
+    showAll(); 
+    Gmaps.map.resetSidebarContent();
     $("#search-form").hide();
     $("#search-button").removeClass("active");
     $(this).addClass("active");
@@ -199,7 +200,8 @@ $("#display-all-button").click(function() {
       success: function(result){
         Gmaps.map.replaceMarkers(result);
       }
-  });
+    });
+    return false;
 
 });
 
