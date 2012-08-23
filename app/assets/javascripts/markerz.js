@@ -275,20 +275,20 @@ $('#searchByDate').submit( function(e){
 ////////////////////  PLAYGROUND  //////////////////////
 ////////////////////////////////////////////////////////
 
-  function getOutOfTheControls(arg) {
-    var actZoom = 0;
-    actZoom = Gmaps.map.serviceObject.getZoom()
-    actZoom --;
-    Gmaps.map.serviceObject.setZoom(actZoom);
-  };
-
-setTimeout(function() {
+function getOutOfTheControls(arg) {
   var actZoom = 0;
-  actZoom = Gmaps.map.serviceObject.getZoom();
+  actZoom = Gmaps.map.serviceObject.getZoom()
   actZoom --;
-    setTimeout(function() {
-      //Gmaps.map.serviceObject.setZoom(actZoom);
-    },50);
-},300);
+  Gmaps.map.serviceObject.setZoom(actZoom);
+};
+
+// setTimeout(function() {
+//   var actZoom = 0;
+//   actZoom = Gmaps.map.serviceObject.getZoom();
+//   actZoom --;
+//     setTimeout(function() {
+//       //Gmaps.map.serviceObject.setZoom(actZoom);
+//     },50);
+// },300);
 
 
