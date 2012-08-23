@@ -113,7 +113,9 @@
       }
         if (howManyMarkers == 1) {
           console.log("one marker only") 
+          Gmaps.map.serviceObject.setZoom(6);
           Gmaps.map.serviceObject.panTo(Gmaps.map.markers[oneMarker].serviceObject.position);
+
         }
         else {
           Gmaps.map.map.fitBounds(newbounds);
