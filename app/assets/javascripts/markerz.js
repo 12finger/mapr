@@ -95,6 +95,7 @@
     Gmaps.map.resetSidebarContent();
     refreshSidebar();
     Gmaps.map.adjustMapToBounds();
+    //getOutOfTheControls;
     Gmaps.map.markerClusterer.repaint();
     displayAll = true;
   }
@@ -119,6 +120,7 @@
         }
         else {
           Gmaps.map.map.fitBounds(newbounds);
+          //getOutOfTheControls;
           console.log("number of visible Markers changed, so we needed to fitNewBounds!")
         }
     }
@@ -269,8 +271,24 @@ $('#searchByDate').submit( function(e){
 
 
 
+////////////////////////////////////////////////////////
+////////////////////  PLAYGROUND  //////////////////////
+////////////////////////////////////////////////////////
 
+  function getOutOfTheControls(arg) {
+    var actZoom = 0;
+    actZoom = Gmaps.map.serviceObject.getZoom()
+    actZoom --;
+    Gmaps.map.serviceObject.setZoom(actZoom);
+  };
 
-
+setTimeout(function() {
+  var actZoom = 0;
+  actZoom = Gmaps.map.serviceObject.getZoom();
+  actZoom --;
+    setTimeout(function() {
+      //Gmaps.map.serviceObject.setZoom(actZoom);
+    },50);
+},300);
 
 
