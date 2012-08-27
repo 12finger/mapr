@@ -3,6 +3,8 @@
 ** TO DO **
 °°°°°°°°°°°
 
+
+- !! FIX: when one bubbles is open already and when click on one cluster then strange things happen...
 - bubble: display Year, (single year if event in one year, two years if event spans over severals years...)
 - SEARCH: allow search to give results, even if the event is allready running (multiple day events currently doesnt show up as result when search start date is after event_startdate), "include" logic?
 - marker logic:
