@@ -160,7 +160,8 @@ html, body {
   max-height: 60%;
   overflow-y: auto; 
   overflow-y: auto;
-  padding: 13px 18px 15px 30px;
+  padding-left: 30px;
+  padding-right: 18px;
   background-color: white;
   background: white;
   margin-top: -1px;
@@ -169,11 +170,25 @@ html, body {
 #no_markers_notice {
   display: none;
 }
+#markers_list div {
+  padding: 13px 0px 15px 0px;
+}
 
 #markers_list li {
   min-width: 125px;
   list-style: none;
 }
+
+
+#markers_list li:first-child {
+  margin-top: 13px;
+  
+}
+#markers_list li:last-child {
+  margin-bottom: 15px;
+}
+
+
 #markers_list li:before {
   /* For a round bullet */
   content:'\2022';
