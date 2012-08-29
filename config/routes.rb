@@ -1,13 +1,19 @@
 Mapr::Application.routes.draw do
 
+  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+
   resources :link1s
   resources :categories
   resources :contacts
 
   match '/' => "contacts#map"
+  root :to => "contacts#map"
   match '/search' => "contacts#searchDate"
   #match 'Karte' => "contacts#map"
-  match 'Kontakte' => "contacts#index"
+  match 'admin' => "admins#index"
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

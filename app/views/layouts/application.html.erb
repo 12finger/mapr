@@ -24,6 +24,16 @@
 </head>
 <body class="<%= body_classes.join(' ') %>">
 
+
+<% if notice || alert %>
+<div id="loginAlertDIV">
+  <div id="loginAlertBox">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+</div>
+<% end %>
+
 <%= yield :head %>
 <%= yield %>
 <%= yield :scripts %>

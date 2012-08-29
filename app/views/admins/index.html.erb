@@ -1,0 +1,15 @@
+<div class="devise">
+  <% if user_signed_in? %>
+    <strong><%= current_user.email %></strong> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+  <% end %>
+</div>
+
+<h1>Welcome to the mapr admin area</h1>
+
+<div>
+  <%= link_to "Edit Events", contacts_path %></td>
+  <%= link_to "Edit Categories", categories_path %></td>
+</div>

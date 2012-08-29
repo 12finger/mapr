@@ -1,5 +1,7 @@
 
 class ContactsController < ApplicationController
+
+  before_filter :authenticate_user!, except: [:map, :searchDate]
   # GET /contacts
   # GET /contacts.json
 

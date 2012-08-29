@@ -29,7 +29,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    cancan (1.6.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -37,6 +39,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.3.3)
+    devise (2.1.2)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (~> 3.1)
+      warden (~> 1.2.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -44,13 +51,13 @@ GEM
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.4)
-    jquery-rails (2.0.2)
-      railties (>= 3.2.0, < 5.0)
+    jquery-rails (2.1.1)
+      railties (>= 3.1.0, < 5.0)
       thor (~> 0.14)
-    jquery-ui-rails (1.1.0)
+    jquery-ui-rails (2.0.0)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.7.4)
+    json (1.7.5)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -58,6 +65,7 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     mysql2 (0.3.11)
+    orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -84,7 +92,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
-    sass (3.1.20)
+    sass (3.2.1)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -93,7 +101,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    thor (0.15.4)
+    thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.10)
       polyglot
@@ -102,12 +110,16 @@ GEM
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    warden (1.2.1)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  cancan
   coffee-rails (~> 3.2.1)
+  devise
   gmaps4rails
   jquery-rails
   jquery-ui-rails
