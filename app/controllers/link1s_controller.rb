@@ -1,4 +1,7 @@
 class Link1sController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   # GET /link1s
   # GET /link1s.json
   def index
