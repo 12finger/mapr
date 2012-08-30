@@ -272,6 +272,9 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
 
   fitBounds : ->
     @serviceObject.fitBounds(@boundsObject) unless @boundsObject.isEmpty()
+    if !(@boundsObject.isEmpty())
+      getOutOfTheControls()
+
 
   centerMapOnUser : ->
     @serviceObject.setCenter(@userLocation)

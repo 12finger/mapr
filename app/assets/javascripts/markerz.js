@@ -120,7 +120,7 @@
         }
         else {
           Gmaps.map.map.fitBounds(newbounds);
-          //getOutOfTheControls;
+          getOutOfTheControls();
           console.log("number of visible Markers changed, so we needed to fitNewBounds!")
         }
     }
@@ -283,10 +283,12 @@ setTimeout(function() {
 ////////////////////////////////////////////////////////
 
 function getOutOfTheControls(arg) {
-  var actZoom = 0;
-  actZoom = Gmaps.map.serviceObject.getZoom()
-  actZoom --;
-  Gmaps.map.serviceObject.setZoom(actZoom);
+  // setTimeout(function() {
+  //   var actZoom = 0;
+  //   actZoom = Gmaps.map.serviceObject.getZoom()
+  //   actZoom --;
+  //   Gmaps.map.serviceObject.setZoom(actZoom);
+  // }, 200);
 };
 
 // setTimeout(function() {
