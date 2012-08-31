@@ -1,6 +1,8 @@
 
 class ContactsController < ApplicationController
 
+  ### aka : Events Controller
+
   before_filter :authenticate_user!, except: [:map, :searchDate]
   # GET /contacts
   # GET /contacts.json
@@ -34,8 +36,10 @@ class ContactsController < ApplicationController
       @sameMonth = false       
       @sameMonth = ( @startDateMonth == @endDateMonth )
 
+      #### simple infowindow:
       #marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
-      ### maybe use a partial here for better MVC separation, but for now above solution suffice
+
+      #### infowindow built in partial
       @eid = event.id
       marker.infowindow render_to_string(:partial => "/contacts/infowindow", :locals => { :object => @contact})
       marker.title   event.name
@@ -106,8 +110,10 @@ class ContactsController < ApplicationController
       @sameMonth = false       
       @sameMonth = ( @startDateMonth == @endDateMonth )
 
+      #### simple infowindow:
       #marker.infowindow  "#{event.name} </br> #{event.categories.collect{|u| u.name}.join(', ')} </br> #{event.address}"
-      ### maybe use a partial here for better MVC separation, but for now above solution suffice
+
+      #### infowindow built in partial
       @eid = event.id
       marker.infowindow render_to_string(:partial => "/contacts/infowindow", :locals => { :object => @contact})
       marker.title   event.name

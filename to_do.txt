@@ -4,8 +4,9 @@
 °°°°°°°°°°°
 
 
+- delete <p id="notice"><%= notice %></p> in all relevant views
+
 - !! FIX: when one bubbles is open already and when click on one cluster then strange things happen...
-- bubble: display Year, (single year if event in one year, two years if event spans over severals years...)
 - SEARCH: allow search to give results, even if the event is allready running (multiple day events currently doesnt show up as result when search start date is after event_startdate), "include" logic?
 - marker logic:
   - if there is no marker to show, then do nothing, don't pan to "nowhere"!
@@ -14,7 +15,7 @@
 - new/edit contacts form : 
   - check for validity, no empty fields should be allowed!
   - check for propper date range, dont allow enddate to be before startdate
-
+- contacts controller needs refactoring: date-handling code
 
 
  
@@ -22,8 +23,7 @@
 
   MILESTONES
 
-    - ADD authoriaztion
-    - ADD admin panel to easyly manage events, etc. (oh, how to integrate the adresspicker in active admin?!?)
+  - implement individual marker symbol logic to contacts controller
 
 
 
@@ -55,3 +55,7 @@ DONE, Finito. Grande!
 - isActive mit in Form einbauen
 - refactor hash code
 - add class "active" to clicked sidebar item (so it stays highlighted all time, even when indirect clicked through hash)
+- bubble: display Year, (single year if event in one year, two years if event spans over severals years...)
+- ADD authoriaztion
+- ADD admin panel to easyly manage events, etc. (oh, how to integrate the adresspicker in active admin?!?)
+

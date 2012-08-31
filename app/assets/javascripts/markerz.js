@@ -180,10 +180,10 @@ $("#markers_list a").click(function() {
 // Location Hashes
 // = = = = = = = = = = = = =
 
- var pasthash = '';
+var pasthash = '';
 
- function clearHash () { 
-    history.pushState("", document.title, window.location.pathname + window.location.search);
+function clearHash () { 
+  history.pushState("", document.title, window.location.pathname + window.location.search);
 }
 
 
@@ -201,11 +201,11 @@ function handleLocationHash() {
 // go to the right buuble when frshly loaded with hash
 window.setInterval(function() {
   if(pasthash == '' && window.location.hash != '') {
-      pasthash = window.location.hash;   
-      setTimeout(function() {
-        handleLocationHash();
-      },2250);
-      // this time is needed to wait till the map gets loaded so the marker is properly panned
+    pasthash = window.location.hash;   
+    setTimeout(function() {
+      handleLocationHash();
+    },2250);
+    // this time is needed to wait till the map gets loaded so the marker is properly panned
   }
 }, 150);
 
