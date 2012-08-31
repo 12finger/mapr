@@ -46,17 +46,17 @@
       $("#markers_list li").removeClass("active");
     });
 
-    // set the zoom after fitbounds, 
-    google.maps.event.addListener(Gmaps.map.map, 'zoom_changed', function() {
-        zoomChangeBoundsListener = 
-            google.maps.event.addListener(Gmaps.map.map, 'bounds_changed', function(event) {
-                if (this.getZoom() > 15) {
-                    // Change max/min zoom here
-                    this.setZoom(6);
-                }
-            google.maps.event.removeListener(zoomChangeBoundsListener);
-        });
-    });
+    // # // set the zoom after fitbounds, 
+    // google.maps.event.addListener(Gmaps.map.map, 'zoom_changed', function() {
+    //     zoomChangeBoundsListener = 
+    //         google.maps.event.addListener(Gmaps.map.map, 'bounds_changed', function(event) {
+    //             if (this.getZoom() > 15) {
+    //                 // Change max/min zoom here
+    //                 this.setZoom(6);
+    //             }
+    //         google.maps.event.removeListener(zoomChangeBoundsListener);
+    //     });
+    // });
 
     // initializing of the Xtra Controls (code in xtraControls.js, Controls are "hidden" via z-index)
     // only of importance when using classic standard gmaps InfoWindows

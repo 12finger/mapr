@@ -41,8 +41,7 @@
     }
   }
 
-  var anyMarkers = true;
-  var howManyMarkers = 0;
+  howManyMarkers = 0;
   function refreshSidebar(arg) { 
     howManyMarkers = 0;
     for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
@@ -52,13 +51,8 @@
       } 
     };
     if (howManyMarkers < 1 ) {
-      anyMarkers = false;
       createSidebarNotice("sorry, there are no events matching your criteria.");
     }
-    else {
-      anyMarkers = true;
-    }
-
   };
 
   function checkForResults(arg) { 
@@ -90,25 +84,23 @@
     Gmaps.map.showMarkers(); 
     for (var i = 0; i <  Gmaps.map.markers.length; ++i) {
       Gmaps.map.markerClusterer.addMarker(Gmaps.map.markers[i].serviceObject);
-      console.log("M" + i + "added , and repainted");
+      console.log("M" + i + "added");
     };
     Gmaps.map.resetSidebarContent();
     refreshSidebar();
     Gmaps.map.adjustMapToBounds();
     //getOutOfTheControls;
     Gmaps.map.markerClusterer.repaint();
+    console.log(" and repainted");
     displayAll = true;
   }
 
-  var howManyMarkersToFit = 0;
   function fitMapToVisibleMarkers(arg) {
-    howManyMarkersToFit = 0
-    if (anyMarkers) {
+      if (howManyMarkers > 0) {
       var newbounds = new google.maps.LatLngBounds();
       for (var i = 0; i < Gmaps.map.markers.length; i++) {
           if (Gmaps.map.markers[i].serviceObject.getVisible()) {
             newbounds.extend(Gmaps.map.markers[i].serviceObject.position);
-            howManyMarkersToFit ++;
             oneMarker = i;
           }
       }
@@ -120,7 +112,7 @@
         }
         else {
           Gmaps.map.map.fitBounds(newbounds);
-          getOutOfTheControls();
+          //getOutOfTheControls();
           console.log("number of visible Markers changed, so we needed to fitNewBounds!")
         }
     }
@@ -215,7 +207,7 @@ window.setInterval(function() {
 // Search by Date
 // = = = = = = = = = = = = =
 
-// baseURL is at /app/assets/javascripts/baseURL.js
+// baseURL is at /app/assets/javascripts/baseURL.js AND in .gitignore
 
 $("#display-all-button").click(function() {
     $("#categories li.active").removeClass("active");
