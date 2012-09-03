@@ -1,5 +1,5 @@
 == Welcome to mapr
 
-mapr shows events/POIs/etc. on a gmap.
-you can sort them by cetegory and date.
+mapr shows events/POIs/etc on a gmap.
+sortable by category and date.
 
