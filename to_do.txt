@@ -24,7 +24,7 @@
   MILESTONES
 
   - implement individual marker symbol logic to contacts controller
-
+  - refactor for: events (get rid of "contacts")
 
 
 
