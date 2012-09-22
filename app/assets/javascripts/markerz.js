@@ -65,7 +65,7 @@
   function createSidebarNotice(text) {
     ul = document.getElementById("markers_list");
     notice = document.createElement('div');
-    html = text
+    html = text;
     notice.innerHTML = html;
     return ul.appendChild(notice);
   };

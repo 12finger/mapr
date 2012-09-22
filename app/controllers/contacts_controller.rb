@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
 
   def map
       @allmarkersjson = Contact.where("isActive = 1").to_gmaps4rails do | event, marker|
-      # prerequisites
+      # prerequisites, date-stuff
       @startDate,@startTime,@startDateMonth,@startDateDigit = ""
       @haveStart = false
       unless (!event.startDate)
@@ -83,7 +83,7 @@ class ContactsController < ApplicationController
     resultz = Contact.where("isActive = 1").where(:startDate => params[:start].to_date..endParam.to_date)
 
     @resultmarkersjson = resultz.to_gmaps4rails do | event, marker|
-      # prerequisites
+      # prerequisites, date-stuff
       @startDate,@startTime,@startDateMonth,@startDateDigit = ""
       @haveStart = false
       unless (!event.startDate)
