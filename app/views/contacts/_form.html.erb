@@ -46,7 +46,7 @@
   <span> "Active?" </span>
   <%= f.check_box :isActive %>
 
-</br></br>
+  </br></br>
 
   <div class="field">
     <%= f.label "Link" %><br />
@@ -54,14 +54,14 @@
   </div>
 
   <% Category.all.each do |cat| %>  
-  <%= check_box_tag :category_ids,  
-    cat.id,  
-    @contact.categories.include?(cat),  
-    :name => 'contact[category_ids][]' %>   
-  <%= cat.name %> </br>   
+    <%= check_box_tag :category_ids,  
+      cat.id,  
+      @contact.categories.include?(cat),  
+      :name => 'contact[category_ids][]' %>   
+    <%= cat.name %> </br>   
   <% end %>
 
-</br>
+  </br>
 
   <div class="field">
     <%= f.label :startDate %><br />
@@ -73,7 +73,7 @@
     <%= f.text_field :endDate %>
   </div>
 
-</br>
+  </br>
 
   <div class="field">
     <%= f.label :address %><br />

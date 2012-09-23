@@ -1,19 +1,27 @@
 Mapr::Application.routes.draw do
 
-  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+#  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
 
+  devise_for :users,
+             :controllers => { :registrations => "users/registrations",
+                               :confirmations => "users/confirmations",
+                               :sessions => 'devise/sessions'},
+             :skip => [:sessions] do
+    get  '/admin/login'   => "devise/sessions#new",       :as => :new_user_session
+    post '/admin/login'  => 'devise/sessions#create',    :as => :user_session
+    get  '/admin/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
+    get  '/signup'   => 'users/registrations#new',   :as => :new_user_registration
+  end
+ 
   resources :link1s
   resources :categories
   resources :contacts
 
-  match '/' => "contacts#map"
+  #match '/' => "contacts#map"
   root :to => "contacts#map"
   match '/search' => "contacts#searchDate"
-  #match 'Karte' => "contacts#map"
-  match 'admin' => "admins#index"
-
-
-
+  match '/admin' => "admins#index"
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
