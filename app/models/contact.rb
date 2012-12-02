@@ -14,6 +14,7 @@ class Contact < ActiveRecord::Base
         "#{self.address}, #{self.zip}, #{self.city}, #{self.country}"
     end
 
+
 end   
 
 

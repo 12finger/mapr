@@ -6,6 +6,8 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'jquery-rails'
+gem "devise"
 
 
 # Gems used only for assets and not required
@@ -21,9 +23,21 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+#gem "rspec-rails", ">= 2.6.1", :group => [:development, :test]
 
-gem "devise"
+
+group :development, :test do
+  gem "rspec-rails"#, ">= 2.6.1"
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'growl'
+  #gem 'ruby_gntp'
+  gem 'rb-fsevent'
+  gem 'capybara'
+  gem 'guard-spork'#, '1.2.0'
+  gem 'spork'#, '0.9.2'
+end
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -42,3 +56,4 @@ gem "devise"
 
 
 gem 'gmaps4rails'
+gem 'unicorn'

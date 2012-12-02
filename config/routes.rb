@@ -1,18 +1,24 @@
 Mapr::Application.routes.draw do
 
 #  devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
+#
+#
 
+  # devise
   devise_for :users,
              :controllers => { :registrations => "users/registrations",
                                :confirmations => "users/confirmations",
-                               :sessions => 'devise/sessions'},
+                               :sessions      => 'devise/sessions'      },
              :skip => [:sessions] do
-    get  '/admin/login'   => "devise/sessions#new",       :as => :new_user_session
-    post '/admin/login'  => 'devise/sessions#create',    :as => :user_session
-    get  '/admin/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
-    get  '/signup'   => 'users/registrations#new',   :as => :new_user_registration
+    get    '/admin/login'   => 'devise/sessions#new',       :as => :new_user_session
+    post   '/admin/login'   => 'devise/sessions#create',    :as => :user_session
+    # only important for testing: get/delete ... read on(or google): rspec and get/delete combined with devise 
+    #delete '/admin/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
+    get    '/admin/logout'  => 'devise/sessions#destroy',   :as => :destroy_user_session
+    #get    '/signup'        => 'devise/registrations#new',  :as => :new_user_registration
   end
- 
+  # end devise
+
   resources :link1s
   resources :categories
   resources :contacts
